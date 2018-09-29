@@ -35,12 +35,7 @@ public class Calc {
 		System.out.println(result);
 	}
 
-	private static int power(int x, int n) {
-	    if (n == 0)
-	        return 1;
-	    if (n == 1)
-	        return x;
-	    else
-	        return x * (power(x, n-1));
+	private static int power(int result, int power) {
+		return result = power == 0 ? 1 : result * (power(result, power - 1));
 	}
 }
