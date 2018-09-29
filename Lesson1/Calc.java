@@ -20,15 +20,15 @@ public class Calc {
 		Scanner scanOper = new Scanner(System.in);
 		
 
-		System.out.println("Простой калькулятор выполняет математические операции (+, -, *, /, ^, %) над целыми положительными числами");
+		System.out.println("РџСЂРѕСЃС‚РѕР№ РєР°Р»СЊРєСѓР»СЏС‚РѕСЂ РІС‹РїРѕР»РЅСЏРµС‚ РјР°С‚РµРјР°С‚РёС‡РµСЃРєРёРµ РѕРїРµСЂР°С†РёРё (+, -, *, /, ^, %) РЅР°Рґ С†РµР»С‹РјРё РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹РјРё С‡РёСЃР»Р°РјРё");
 		
-		System.out.print("Введите первое целое число: ");
+		System.out.print("Р’РІРµРґРёС‚Рµ РїРµСЂРІРѕРµ С†РµР»РѕРµ С‡РёСЃР»Рѕ: ");
 		number1 = scanNum1.nextInt();
 
-		System.out.print("Введите знак операции (+, -, *, /, ^, %): ");
+		System.out.print("Р’РІРµРґРёС‚Рµ Р·РЅР°Рє РѕРїРµСЂР°С†РёРё (+, -, *, /, ^, %): ");
 		operator = scanOper.nextLine();
 
-		System.out.print("Введите второе целое число: ");
+		System.out.print("Р’РІРµРґРёС‚Рµ РІС‚РѕСЂРѕРµ С†РµР»РѕРµ С‡РёСЃР»Рѕ: ");
 		number2 = scanNum2.nextInt();
 
 		System.out.print(number1+operator+number2+"=");

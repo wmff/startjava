@@ -5,15 +5,15 @@ public class MyFirstGame {
 		int num;
 		int rand = (int)(System.currentTimeMillis()%100)+1;
 		Scanner scanNum = new Scanner(System.in);
-		System.out.print("Угадай число от 1 до 100: ");
+		System.out.print("РЈРіР°РґР°Р№ С‡РёСЃР»Рѕ РѕС‚ 1 РґРѕ 100: ");
 		while(true) {
 			num = scanNum.nextInt();
 			if (num > rand) {
-				System.out.println("Введенное вами число больше того, что загадал компьютер");
+				System.out.println("Р’РІРµРґРµРЅРЅРѕРµ РІР°РјРё С‡РёСЃР»Рѕ Р±РѕР»СЊС€Рµ С‚РѕРіРѕ, С‡С‚Рѕ Р·Р°РіР°РґР°Р» РєРѕРјРїСЊСЋС‚РµСЂ");
 			} else if (num < rand) {
-				System.out.println("Введенное вами число меньше того, что загадал компьютер");
+				System.out.println("Р’РІРµРґРµРЅРЅРѕРµ РІР°РјРё С‡РёСЃР»Рѕ РјРµРЅСЊС€Рµ С‚РѕРіРѕ, С‡С‚Рѕ Р·Р°РіР°РґР°Р» РєРѕРјРїСЊСЋС‚РµСЂ");
 			} else if (num == rand) {
-				System.out.println("Вы угадали!");
+				System.out.println("Р’С‹ СѓРіР°РґР°Р»Рё!");
 				break;
 			}
 		}
