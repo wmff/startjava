@@ -1,21 +1,25 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class MyFirstGame {	
 	public static void main(String[] args) {
-		int num;
-		int rand = (int)(System.currentTimeMillis()%100)+1;
-		Scanner scanNum = new Scanner(System.in);
+		Random random = new Random();
+		int unknownNumber = random.nextInt(100);
+		int estimatedNumber;
+
+		Scanner scanEstimatedNumber = new Scanner(System.in);
+
 		System.out.print("Угадай число от 1 до 100: ");
 		while(true) {
-			num = scanNum.nextInt();
-			if (num > rand) {
+			estimatedNumber = scanEstimatedNumber.nextInt();
+			if (estimatedNumber > unknownNumber) {
 				System.out.println("Введенное вами число больше того, что загадал компьютер");
-			} else if (num < rand) {
+			} else if (estimatedNumber < unknownNumber) {
 				System.out.println("Введенное вами число меньше того, что загадал компьютер");
-			} else if (num == rand) {
-				System.out.println("Вы угадали!");
+			} else if (estimatedNumber == unknownNumber) {
 				break;
 			}
 		}
+		System.out.println("Вы угадали!");
 	}
 }

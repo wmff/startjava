@@ -1,38 +1,23 @@
 import java.util.Scanner;
 
 public class Calc {	
-	public static int power(int x, int n) {
-	    if (n == 0)
-	        return 1;
-	    if (n == 1)
-	        return x;
-	    else
-	        return x * (power(x, n-1));
-	}
-
 	public static void main(String[] args) {
-		int number1 = 0;
-		int number2 = 0;
-		int result = 0;
-		String operator;
-		Scanner scanNum1 = new Scanner(System.in);
-		Scanner scanNum2 = new Scanner(System.in);
-		Scanner scanOper = new Scanner(System.in);
-		
-
 		System.out.println("Простой калькулятор выполняет математические операции (+, -, *, /, ^, %) над целыми положительными числами");
+
+		Scanner scanner = new Scanner(System.in);		
 		
 		System.out.print("Введите первое целое число: ");
-		number1 = scanNum1.nextInt();
+		int number1 = scanner.nextInt();
 
 		System.out.print("Введите знак операции (+, -, *, /, ^, %): ");
-		operator = scanOper.nextLine();
+		String operator = scanner.next();
 
 		System.out.print("Введите второе целое число: ");
-		number2 = scanNum2.nextInt();
+		int number2 = scanner.nextInt();
 
-		System.out.print(number1+operator+number2+"=");
+		System.out.print(number1 + operator + number2 + "=");
 
+		int result = 0;
 		if (operator.equals("+")) {
 			result = number1 + number2;
 		} else if (operator.equals("-")) {
@@ -48,5 +33,14 @@ public class Calc {
 		}
 
 		System.out.println(result);
+	}
+
+	private static int power(int x, int n) {
+	    if (n == 0)
+	        return 1;
+	    if (n == 1)
+	        return x;
+	    else
+	        return x * (power(x, n-1));
 	}
 }
