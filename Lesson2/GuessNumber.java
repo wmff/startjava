@@ -6,6 +6,7 @@ public class GuessNumber {
 	public GuessNumber() {
 		Random random = new Random();
 		this.guessNumber = random.nextInt(100);
+		System.out.println(this.guessNumber);
 	}
 	
 	public int checkNumber(String playerName, int number) {
