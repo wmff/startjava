@@ -1,4 +1,5 @@
 public class Calculator {	
+	
 	public static void calc(int number1, String operator, int number2) {
 		switch(operator) {
 			case "+":
