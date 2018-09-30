@@ -1,7 +1,8 @@
 public class Player {
+	
 	private String name;
 	private int number;
-	private boolean winner = false;
+	private boolean isWin = false;
 	
 	public Player(String name) {
 		this.name = name;
@@ -11,12 +12,12 @@ public class Player {
 		return this.name;
 	}
 
-	public void setWinner() {
-		this.winner = true;
+	public void setIsWin() {
+		this.isWin = true;
 	}
 	
-	public boolean getWinner() {
-		return this.winner;
+	public boolean getIsWin() {
+		return this.isWin;
 	}
 	
 	public void setNumber(int number) {
