@@ -1,8 +1,6 @@
 public class JaegerTest {	
 	public static void main(String[] args) {
 		Jaeger robot1 = new Jaeger();
-		Jaeger robot2 = new Jaeger();
-
 		robot1.setModelName("Bracer Phoenix");
 		robot1.setMark("Mark-5");
 		robot1.setOrigin("USA");
@@ -12,6 +10,7 @@ public class JaegerTest {
 		robot1.setStrength(8);
 		robot1.setArmor(9);
 
+		Jaeger robot2 = new Jaeger();
 		robot2.setModelName("Gipsy Danger");
 		robot2.setMark("Mark-3");
 		robot2.setOrigin("USA");
@@ -21,9 +20,7 @@ public class JaegerTest {
 		robot2.setStrength(8);
 		robot2.setArmor(6);
 
-// robot2 = robot1;
-// robot1 = robot2;
-
+		
 		System.out.println(robot1.getModelName());
 		System.out.println(robot1.getMark());
 		System.out.println(robot1.getOrigin());

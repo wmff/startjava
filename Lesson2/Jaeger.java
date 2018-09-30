@@ -8,22 +8,6 @@ public class Jaeger {
 	private int strength;
 	private int armor;
 
-	boolean drift() {
-		return true;
-	}
-
-	void move() {
-
-	}
-
-	String scanKaiju() {
-		return "scanKaiju";
-	}
-
-	void useVortexCannon() {
-
-	}
-
 	public void setModelName(String modelName) {
 		this.modelName = modelName;
 	}
@@ -88,4 +72,19 @@ public class Jaeger {
 		return this.armor;
 	}
 
+	boolean drift() {
+		return true;
+	}
+
+	void move() {
+
+	}
+
+	String scanKaiju() {
+		return "scanKaiju";
+	}
+
+	void useVortexCannon() {
+
+	}
 }
