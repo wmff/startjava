@@ -36,6 +36,6 @@ public class Calc {
 	}
 
 	private static int power(int result, int power) {
-		return result = power == 0 ? 1 : result * (power(result, power - 1));
+		return power == 0 ? 1 : result * (power(result, power - 1));
 	}
 }
