@@ -13,23 +13,21 @@ public class GuessNumberTest {
 		Player player2 = new Player(scanner.next());
 		
 		GuessNumber guessNumber = new GuessNumber();
-		
-		boolean isExit = false;
-		
-		while (isExit == false) {
+
+		String response = "да";				
+		do { 
 			if (guessNumber.game(player1, player2)) {
-				while (true) {
+				do {
 					System.out.println("Хотите продолжить? [да/нет]: ");
-					String response = scanner.next();				
-					if (response.equals("нет")) {
-						isExit = true;
-						break;
-					} else if (response.equals("да")){
+					response = scanner.next();
+					if (response.equals("да")) {
 						guessNumber.newGuessNumber();
 						break;
+					} else if (response.equals("нет")) {
+						break;
 					}
-				}
+				} while (true);
 			}
-		}
+		} while (response.equals("да"));
 	}
 }

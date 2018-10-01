@@ -4,12 +4,16 @@ import java.util.Scanner;
 public class GuessNumber {
 	
 	private int guessNumber;
-	Random random = new Random();
 	
 	public GuessNumber() {
-		this.guessNumber = random.nextInt(100);
+		this.newGuessNumber();
 	}
 	
+	public void newGuessNumber() {
+		Random random = new Random();
+		this.guessNumber = random.nextInt(100);
+	}
+
 	/**
 	возвращает true если есть победитель
 	*/
@@ -52,7 +56,4 @@ public class GuessNumber {
 		}
 	}
 	
-	public void newGuessNumber() {
-		this.guessNumber = random.nextInt(100);
-	}
 }
