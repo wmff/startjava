@@ -6,10 +6,10 @@ public class GuessNumber {
 	private int guessNumber;
 	
 	public GuessNumber() {
-		this.newGuessNumber();
+		this.newGameNumber();
 	}
 	
-	public void newGuessNumber() {
+	public void newGameNumber() {
 		Random random = new Random();
 		this.guessNumber = random.nextInt(100);
 	}
