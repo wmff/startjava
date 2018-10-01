@@ -12,16 +12,15 @@ public class GuessNumberTest {
 		System.out.println("Введите имя игрока 2:");
 		Player player2 = new Player(scanner.next());
 		
-		GuessNumber guessNumber = new GuessNumber();
+		GuessNumber guessNumber = new GuessNumber(player1, player2);
 
 		String response = "да";				
 		do { 
-			if (guessNumber.game(player1, player2)) {
+			if (guessNumber.game()) {
 				do {
 					System.out.println("Хотите продолжить? [да/нет]: ");
 					response = scanner.next();
 					if (response.equals("да")) {
-						guessNumber.newGameNumber();
 						break;
 					} else if (response.equals("нет")) {
 						break;

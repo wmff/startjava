@@ -12,8 +12,8 @@ public class Player {
 		return this.name;
 	}
 
-	public void setIsWin() {
-		this.isWin = true;
+	public void setIsWin(boolean bool) {
+		this.isWin = bool;
 	}
 	
 	public boolean getIsWin() {
