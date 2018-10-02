@@ -16,16 +16,13 @@ public class GuessNumberTest {
 
 		String response = "да";				
 		do { 
-			if (guessNumber.game()) {
+			if (guessNumber.startGame()) {
 				do {
 					System.out.println("Хотите продолжить? [да/нет]: ");
 					response = scanner.next();
-					if (response.equals("да")) {
-						break;
-					} else if (response.equals("нет")) {
-						break;
-					}
-				} while (true);
+				} while (!response.equals("нет") && !response.equals("да"));
+			} else {
+				System.out.println("Не угадали. Играем дальше!");
 			}
 		} while (response.equals("да"));
 	}

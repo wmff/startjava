@@ -5,20 +5,20 @@ public class GuessNumber {
 	
 	private Player player1;
 	private Player player2;
+	Random random = new Random();
 	private int guessNumber;
+	Scanner scanner = new Scanner(System.in);
 	
 	public GuessNumber(Player player1, Player player2) {
 		this.player1 = player1;
 		this.player2 = player2;
-		Random random = new Random();
 		guessNumber = random.nextInt(100);
 	}
 	
 	/*
 	возвращает true если есть победитель
 	*/
-	public boolean game() {
-		Scanner scanner = new Scanner(System.in);
+	public boolean startGame() {
 
 		System.out.print(player1.getName() + " угадай число от 1 до 100: ");
 		player1.setNumber(scanner.nextInt());
@@ -35,13 +35,11 @@ public class GuessNumber {
 			
 		if (player1.getIsWin()) {
 			System.out.println(player1.getName() + " победил!");
-			Random random = new Random();
 			guessNumber = random.nextInt(100);
 			player1.setIsWin(false);
 			return true;
 		} else if (player2.getIsWin()) {
 			System.out.println(player2.getName() + " победил!");
-			Random random = new Random();
 			guessNumber = random.nextInt(100);
 			player2.setIsWin(false);
 			return true;
