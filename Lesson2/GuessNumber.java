@@ -34,14 +34,10 @@ public class GuessNumber {
 		}
 			
 		if (player1.getIsWin()) {
-			System.out.println(player1.getName() + " победил!");
-			guessNumber = random.nextInt(100);
-			player1.setIsWin(false);
+			newGame(player1);
 			return true;
 		} else if (player2.getIsWin()) {
-			System.out.println(player2.getName() + " победил!");
-			guessNumber = random.nextInt(100);
-			player2.setIsWin(false);
+			newGame(player2);
 			return true;
 		} else {
 			return false;
@@ -59,5 +55,10 @@ public class GuessNumber {
 			return true;
 		}
 	}
-	
+
+	private void newGame(Player winner) {
+		System.out.println(winner.getName() + " победил!");
+        guessNumber = random.nextInt(100);
+        winner.setIsWin(false);
+	}	
 }
