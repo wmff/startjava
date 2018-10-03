@@ -1,3 +1,5 @@
+package com.startjava.lesson_2_3.calculator;
+
 import java.util.Scanner;
 
 public class CalculatorTest {
@@ -8,20 +10,17 @@ public class CalculatorTest {
 		System.out.println("Простой калькулятор выполняет математические операции (+, -, *, /, ^, %) над целыми положительными числами");
 
 		Calculator calculator = new Calculator();
-		boolean isExit = false;
-		
-		while (isExit == false) {
-			calculator.calc(getNumber1(), getOperator(), getNumber2());
-			while (true) {
+		String response = "да";
+
+		while (response.equals("да")) {
+			calculator.setFirstNumber(getNumber1());
+			calculator.setMathOperator(getOperator());
+			calculator.setSecondNumber(getNumber2());
+			calculator.calc();
+			do {
 				System.out.println("Хотите продолжить? [да/нет]: ");
-				String response = scanner.next();
-				if (response.equals("нет")) {
-					isExit = true;
-					break;
-				} else if (response.equals("да")) {
-					break;
-				}
-			} 
+				response = scanner.next();
+			} while (!response.equals("нет") && !response.equals("да"));
 		}
 	}
 
@@ -30,9 +29,9 @@ public class CalculatorTest {
 		return scanner.nextInt();
 	}
 
-	public static String getOperator() {
+	public static char getOperator() {
 		System.out.print("Введите знак операции (+, -, *, /, ^, %): ");
-		return scanner.next();
+		return scanner.next().charAt(0);
 	}
 
 	public static int getNumber2() {
