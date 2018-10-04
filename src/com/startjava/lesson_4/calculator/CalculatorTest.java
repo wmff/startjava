@@ -1,8 +1,10 @@
-package com.startjava.lesson_2_3.calculator;
+package com.startjava.lesson_4.calculator;
 
 import java.util.Scanner;
 
 public class CalculatorTest {
+	
+
 
 	public static void main(String[] args) {
 		System.out.println("Простой калькулятор выполняет математические операции (+, -, *, /, ^, %) над целыми положительными числами");
@@ -12,18 +14,11 @@ public class CalculatorTest {
 		Scanner scanner = new Scanner(System.in);
 
 		while (response.equals("да")) {
-			System.out.print("Введите первое целое число: ");
-			calculator.setFirstNumber(scanner.nextInt());
-
-			System.out.print("Введите знак операции (+, -, *, /, ^, %): ");
-			calculator.setMathOperator(scanner.next().charAt(0));
-
-			System.out.print("Введите второе целое число: ");
-			calculator.setSecondNumber(scanner.nextInt());
-			calculator.calc();
+			System.out.print("Введите математическое выражение (например: '2 + 2'): ");
+			calculator.calc(scanner.nextLine());
 			do {
 				System.out.print("Хотите продолжить? [да/нет]: ");
-				response = scanner.next();
+				response = scanner.nextLine();
 			} while (!response.equals("нет") && !response.equals("да"));
 		}
 	}

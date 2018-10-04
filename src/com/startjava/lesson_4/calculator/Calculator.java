@@ -1,25 +1,39 @@
-package com.startjava.lesson_2_3.calculator;
+package com.startjava.lesson_4.calculator;
 
-public class Calculator {
+import java.lang.Math;
+
+final class Calculator {
 
     private int firstNumber;
     private char mathOperator;
     private int secondNumber;
 
-    public void setFirstNumber(int firstNumber) {
+    private void setFirstNumber(int firstNumber) {
         this.firstNumber = firstNumber;
     }
 
-    public void setMathOperator(char mathOperator) {
+    private void setMathOperator(char mathOperator) {
         this.mathOperator = mathOperator;
     }
 
-    public void setSecondNumber(int secondNumber) {
+    private void setSecondNumber(int secondNumber) {
         this.secondNumber = secondNumber;
     }
 
-    public void calc() {
-        switch(mathOperator) {
+    private void splitMathExpr(String mathExpr) {
+
+        String[] mathExprArray = mathExpr.replaceAll("\\s", "").split("(?<=[-+*/^%])|(?=[-+*/^%])");
+
+        setFirstNumber(Integer.parseInt(mathExprArray[0]));
+        setMathOperator(mathExprArray[1].charAt(0));
+        setSecondNumber(Integer.parseInt(mathExprArray[2]));
+    }
+
+    final void calc(String mathExpr) {
+
+        splitMathExpr(mathExpr);
+
+        switch (mathOperator) {
             case '+':
                 System.out.println(firstNumber + secondNumber);
                 break;
@@ -33,18 +47,11 @@ public class Calculator {
                 System.out.println(firstNumber / secondNumber);
                 break;
             case '^':
-                System.out.println(power(firstNumber, secondNumber));
+                System.out.println((int) Math.pow(firstNumber, secondNumber));
                 break;
             case '%':
                 System.out.println(firstNumber % secondNumber);
                 break;
-            default:
-                System.out.println("Не обрабатываемое математическое действие");
-                break;
         }
-    }
-
-    private static int power(int result, int power) {
-        return power == 0 ? 1 : result * (power(result, power - 1));
     }
 }
