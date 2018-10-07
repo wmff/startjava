@@ -1,60 +1,33 @@
 package com.startjava.lesson_4.game;
 
-import java.util.Arrays;
-
 class Player {
 	
 	private final String name;
-	private int number;
 	private boolean isWin = false;
-	private int[] answerNumbers = new int[0];
+	private int[] answerNumbers = new int[10];
 	
 	Player(String name) {
 		this.name = name;
 	}
 	
 	String getName() {
-		return this.name;
+		return name;
 	}
 
-	void setNumber(int number) {
-		this.number = number;
-		addAnswerNumbers(number);
-	}
-	
-	int getNumber() {
-		return this.number;
-	}
-
-	void setIsWin(boolean bool) {
-		this.isWin = bool;
+	void setIsWin(boolean isWin) {
+		this.isWin = isWin;
 	}
 
 	boolean getIsWin() {
-		return this.isWin;
+		return isWin;
 	}
 
-	private void addAnswerNumbers(int answerNumber) {
-		answerNumbers = Arrays.copyOf(answerNumbers, answerNumbers.length + 1);
-		answerNumbers[answerNumbers.length - 1] = answerNumber;
+	int[] getAnswerNumbers() {
+		return answerNumbers;
 	}
 
-	int getCountAnswers() {
-		return answerNumbers.length;
+	void setAnswerNumbers(int[] answerNumbers) {
+		this.answerNumbers = answerNumbers;
 	}
 
-	void clearAnswers() {
-		answerNumbers = new int[0];
-	}
-
-    void printAnswers() {
-        System.out.print(getName() + " [");
-        for (int i = 0; i < answerNumbers.length ; i++) {
-            System.out.print(answerNumbers[i]);
-            if (i < answerNumbers.length-1) {
-                System.out.print(", ");
-            }
-        }
-        System.out.println("]");
-    }
 }
