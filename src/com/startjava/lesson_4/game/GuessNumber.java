@@ -1,5 +1,6 @@
 package com.startjava.lesson_4.game;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -20,25 +21,24 @@ class GuessNumber {
         prepareNewGame();
 
 		do {
-			System.out.print(player1.getName() + " угадай число от 1 до 100: ");
-			addNumberToAnswerNumbers(player1, scanner.nextInt());
-			if (checkPlayerNumber(player1) && getCountAnswers(player1) == 10) {
-				System.out.println(lossMessage(player1));
-			}
+			askNumber(player1);
 			if (player1.getIsWin()) {
 				break;
 			}
-
-			System.out.print(player2.getName() + " угадай число от 1 до 100: ");
-			addNumberToAnswerNumbers(player2, scanner.nextInt());
-			if (checkPlayerNumber(player2) && getCountAnswers(player2) == 10) {
-				System.out.println(lossMessage(player2));
-			}
+			askNumber(player2);
 		} while (checkFinishGame(player1) && checkFinishGame(player2));
 
 		printAnswers(player1);
 		printAnswers(player2);
 	}
+
+	private void askNumber(Player player) {
+        System.out.print(player.getName() + " угадай число от 1 до 100: ");
+        saveAnswerNumber(player);
+        if (checkPlayerNumber(player) && player.getNumberAttempts() == 10) {
+            printLossMessage(player);
+        }
+    }
 
 	private void prepareNewGame() {
 		guessNumber = random.nextInt(99) + 1;
@@ -46,26 +46,20 @@ class GuessNumber {
 		player1.setIsWin(false);
 		player2.setIsWin(false);
 
-		clearAnswers(player1, player2);
+		clearAnswers(player1);
+		clearAnswers(player2);
+
+        player1.setNumberAttempts(0);
+        player2.setNumberAttempts(0);
 	}
 
-	private void clearAnswers(Player player1, Player player2) {
-		int[] tmpAnswerNumbers = new int[10];
-		player1.setAnswerNumbers(tmpAnswerNumbers);
-		player2.setAnswerNumbers(tmpAnswerNumbers);
+	private void clearAnswers(Player player) {
+        Arrays.fill(player.getAnswerNumbers(), 0, player.getNumberAttempts(), 0);
 	}
 
-	private void addNumberToAnswerNumbers(Player player, int number) {
-		int[] tmpAnswerNumbers = new int[10];
-		for (int i = 0; i < player.getAnswerNumbers().length ; i++) {
-			if (player.getAnswerNumbers()[i] == 0) {
-				tmpAnswerNumbers[i] = number;
-				break;
-			} else {
-				tmpAnswerNumbers[i] = player.getAnswerNumbers()[i];
-			}
-		}
-		player.setAnswerNumbers(tmpAnswerNumbers);
+	private void saveAnswerNumber(Player player) {
+        player.getAnswerNumbers()[player.getNumberAttempts()] = scanner.nextInt();
+        player.setNumberAttempts(player.getNumberAttempts() + 1);
 	}
 
 	private boolean checkPlayerNumber(Player player) {
@@ -76,45 +70,37 @@ class GuessNumber {
 			System.out.println("Введенное " + player.getName() + " число меньше того, что загадал компьютер");
 			return true;
 		} else {
-			System.out.println(winMessage(player));
+			printWinMessage(player);
 			player.setIsWin(true);
 			return false;
 		}
 	}
 
 	private int getLastAnswerNumber(Player player) {
-		return player.getAnswerNumbers()[getCountAnswers(player)-1];
+		return player.getAnswerNumbers()[player.getNumberAttempts()-1];
 	}
 
-    private int getCountAnswers(Player player) {
-		int countAnswers = 0;
-		for (int number: player.getAnswerNumbers()) {
-			if (number > 0) countAnswers++;
-		}
-		return countAnswers;
-	}
-
-	private String winMessage(Player player) {
-		return "Игрок " + player.getName() +
+	private void printWinMessage(Player player) {
+        System.out.println("Игрок " + player.getName() +
 				" угадал число " + guessNumber +
-				" с " + getCountAnswers(player) + " попытки";
+				" с " + player.getNumberAttempts() + " попытки");
 	}
 
-	private String lossMessage(Player player) {
-		return  "У " + player.getName() + " закончились попытки";
+	private void printLossMessage(Player player) {
+        System.out.println("У " + player.getName() + " закончились попытки");
 	}
 
 	private boolean checkFinishGame(Player player) {
-		return getCountAnswers(player) != 10 && !player.getIsWin();
+		return player.getNumberAttempts() != 10 && !player.getIsWin();
 	}
 
 	private void printAnswers(Player player) {
 		System.out.print(player.getName() + " [");
-		for (int i = 0; i < getCountAnswers(player) ; i++) {
-				System.out.print(player.getAnswerNumbers()[i]);
-				if (i < getCountAnswers(player) - 1) {
-					System.out.print(", ");
-				}
+		for (int i = 0; i < player.getNumberAttempts() ; i++) {
+		    System.out.print(player.getAnswerNumbers()[i]);
+		    if (i < player.getNumberAttempts() - 1) {
+		        System.out.print(", ");
+		    }
 		}
 		System.out.println("]");
 	}

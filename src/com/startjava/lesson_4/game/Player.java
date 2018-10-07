@@ -4,7 +4,8 @@ class Player {
 	
 	private final String name;
 	private boolean isWin = false;
-	private int[] answerNumbers = new int[10];
+	private final int[] answerNumbers = new int[10];
+	private int numberAttempts = 0;
 	
 	Player(String name) {
 		this.name = name;
@@ -26,8 +27,11 @@ class Player {
 		return answerNumbers;
 	}
 
-	void setAnswerNumbers(int[] answerNumbers) {
-		this.answerNumbers = answerNumbers;
-	}
+    int getNumberAttempts() {
+        return numberAttempts;
+    }
 
+    void setNumberAttempts(int numberAttempts) {
+        this.numberAttempts = numberAttempts;
+    }
 }
