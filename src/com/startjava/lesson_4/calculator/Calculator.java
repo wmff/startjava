@@ -2,7 +2,7 @@ package com.startjava.lesson_4.calculator;
 
 import java.lang.Math;
 
-final class Calculator {
+class Calculator {
 
     private int firstNumber;
     private char mathOperator;
@@ -20,37 +20,35 @@ final class Calculator {
         this.secondNumber = secondNumber;
     }
 
-    private void splitMathExpr(String mathExpr) {
+    private void splitMathExpression(String mathExpr) {
+        String[] mathExpressionArray = mathExpr.split(" ");
 
-        String[] mathExprArray = mathExpr.replaceAll("\\s", "").split("(?<=[-+*/^%])|(?=[-+*/^%])");
-
-        setFirstNumber(Integer.parseInt(mathExprArray[0]));
-        setMathOperator(mathExprArray[1].charAt(0));
-        setSecondNumber(Integer.parseInt(mathExprArray[2]));
+        setFirstNumber(Integer.parseInt(mathExpressionArray[0]));
+        setMathOperator(mathExpressionArray[1].charAt(0));
+        setSecondNumber(Integer.parseInt(mathExpressionArray[2]));
     }
 
-    final void calc(String mathExpr) {
-
-        splitMathExpr(mathExpr);
+    void calc(String mathExpr) {
+        splitMathExpression(mathExpr);
 
         switch (mathOperator) {
             case '+':
-                System.out.println(firstNumber + secondNumber);
+                System.out.println(Math.addExact(firstNumber, secondNumber));
                 break;
             case '-':
-                System.out.println(firstNumber - secondNumber);
+                System.out.println(Math.subtractExact(firstNumber , secondNumber));
                 break;
             case '*':
-                System.out.println(firstNumber * secondNumber);
+                System.out.println(Math.multiplyExact(firstNumber, secondNumber));
                 break;
             case '/':
-                System.out.println(firstNumber / secondNumber);
+                System.out.println(Math.floorDiv(firstNumber, secondNumber));
                 break;
             case '^':
                 System.out.println((int) Math.pow(firstNumber, secondNumber));
                 break;
             case '%':
-                System.out.println(firstNumber % secondNumber);
+                System.out.println(Math.floorMod(firstNumber, secondNumber));
                 break;
         }
     }
