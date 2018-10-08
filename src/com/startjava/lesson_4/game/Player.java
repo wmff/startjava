@@ -1,37 +1,49 @@
 package com.startjava.lesson_4.game;
 
+import java.util.Arrays;
+
 class Player {
 	
 	private final String name;
-	private boolean isWin = false;
+	private boolean isWin;
 	private final int[] answerNumbers = new int[10];
-	private int numberAttempts = 0;
+	private int numberAttempts;
 	
-	Player(String name) {
+	public Player(String name) {
 		this.name = name;
 	}
 	
-	String getName() {
+	public String getName() {
 		return name;
 	}
 
-	void setIsWin(boolean isWin) {
+	public void setIsWin(boolean isWin) {
 		this.isWin = isWin;
 	}
 
-	boolean getIsWin() {
+	public boolean getIsWin() {
 		return isWin;
 	}
 
-	int[] getAnswerNumbers() {
-		return answerNumbers;
-	}
+	public void setNumbers(int number) {
+        answerNumbers[numberAttempts] = number;
+        numberAttempts++;
+    }
 
-    int getNumberAttempts() {
+    public int[] getAnswerNumbers() {
+        return Arrays.copyOf(answerNumbers, numberAttempts);
+    }
+
+    public int getLastAnswerNumber() {
+        return answerNumbers[numberAttempts-1];
+    }
+
+    public void setNumberAttempts(int numberAttempts) {
+        this.numberAttempts = numberAttempts;
+    }
+
+    public int getNumberAttempts() {
         return numberAttempts;
     }
 
-    void setNumberAttempts(int numberAttempts) {
-        this.numberAttempts = numberAttempts;
-    }
 }
