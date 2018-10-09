@@ -30,11 +30,10 @@ class GuessNumber {
 			checkPlayerNumber(player2);
 		} while (checkFinishGame(player1) && checkFinishGame(player2));
 
-		printAnswers(player1);
-		printAnswers(player2);
+		endGame();
 	}
 
-	private void prepareNewGame() {
+    private void prepareNewGame() {
 		guessNumber = random.nextInt(100);
 
 		player1.setIsWin(false);
@@ -65,7 +64,7 @@ class GuessNumber {
 			printWinMessage(player);
 			player.setIsWin(true);
 		}
-		if (player.getNumberAttempts() == 10) {
+		if (player.getNumberAttempts() == 10 && !player.getIsWin()) {
 			printLossMessage(player);
 		}
 	}
@@ -85,14 +84,12 @@ class GuessNumber {
 	}
 
 	private void printAnswers(Player player) {
-		System.out.print(player.getName() + " [");
-		for (int i = 0; i < player.getAnswerNumbers().length; i++) {
-		    System.out.print(player.getAnswerNumbers()[i]);
-		    if (i < player.getAnswerNumbers().length - 1) {
-		        System.out.print(", ");
-		    }
-		}
-		System.out.println("]");
+		System.out.println(player.getName() + " = " +	Arrays.toString(player.getAnswerNumbers()));
 	}
+
+    private void endGame() {
+        printAnswers(player1);
+        printAnswers(player2);
+    }
 
 }
