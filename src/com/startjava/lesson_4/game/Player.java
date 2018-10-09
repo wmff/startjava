@@ -6,11 +6,13 @@ class Player {
 	
 	private final String name;
 	private boolean isWin;
-	private final int[] answerNumbers = new int[10];
+	private final int[] answerNumbers;
 	private int numberAttempts;
 	
 	public Player(String name) {
 		this.name = name;
+		answerNumbers = new int[10];
+		numberAttempts = 1;
 	}
 	
 	public String getName() {
