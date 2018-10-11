@@ -1,3 +1,5 @@
+\connect Jaegers;
+
 -- выведите всю таблицу
 SELECT * FROM robots;
 
@@ -21,7 +23,7 @@ SELECT * FROM robots WHERE kaijuKill = (SELECT MIN(kaijuKill) FROM robots);
 SELECT AVG(weight) FROM robots;
 
 -- увеличьте на единицу количество уничтоженных kaiju у роботов, которые до сих пор не разрушены
-UPDATE robots SET kaijuKill=kaijuKill+1 WHERE status != 'Destroyed'
+UPDATE robots SET kaijuKill = kaijuKill + 1 WHERE status != 'Destroyed';
 
 -- удалите уничтоженных роботов
-DELETE FROM robots WHERE status='Destroyed';
+DELETE FROM robots WHERE status = 'Destroyed';
